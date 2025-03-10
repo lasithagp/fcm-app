@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://lasithagp:$HF_TOKEN@huggingface.co/spaces/HF_USERNAME/fcm-app main
+        run: git push https://lasithagp:$HF_TOKEN@huggingface.co/spaces/lasithagp/fcm-app main
