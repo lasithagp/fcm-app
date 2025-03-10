@@ -14,6 +14,11 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Verify Authentication
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git ls-remote https://lasithagp:$HF_TOKEN@huggingface.co/spaces/lasithagp/fcm-app
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
