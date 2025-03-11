@@ -157,6 +157,12 @@ choice = st.sidebar.radio("Select an option", options)
 if choice == "Upload Configuration File":
     upload_config_file()
 
+    # Display app information
+    st.write("This app generate synthetic flow cytometry data based on user-defined populations and parameters.")
+    st.write("The app also allows users to upload a configuration file to define populations and parameters.")
+    st.write("The generated data can be visualized, adjusted for class imbalance, and downloaded in .fcs. or .csv format.")
+    st.write("For more information, please refer to the sidebar options.")
+
 elif choice == "Define/Edit Populations":
     define_edit_populations()
     
@@ -363,8 +369,4 @@ elif choice == "Download Data":
     else:
         st.write("Please generate data before downloading.")
 
-# Display app information
-st.write("This app generate synthetic flow cytometry data based on user-defined populations and parameters.")
-st.write("The app also allows users to upload a configuration file to define populations and parameters.")
-st.write("The generated data can be visualized, adjusted for class imbalance, and downloaded in .fcs. or .csv format.")
-st.write("For more information, please refer to the sidebar options.")
+
