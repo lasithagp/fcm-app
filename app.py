@@ -299,7 +299,7 @@ elif choice == "Class Imbalance Correction":
             for pop in sorted_populations:
                 desired_sizes[pop['name']] = st.number_input(f"Desired Size for {pop['name']}", min_value=0, max_value=10000, value=pop['size'], key=f"desired_size_{pop['name']}")
             
-            balancing_technique = st.selectbox("Select Balancing Technique", ["None", "SMOTE", "ADASYN"], index=0, key="balancing_technique")
+            balancing_technique = st.selectbox("Select Balancing Technique for oversampling", ["None", "SMOTE", "ADASYN"], index=0, key="balancing_technique")
             
             if balancing_technique in ["SMOTE", "ADASYN"]:
                 k_neighbors = st.number_input("Number of Neighbors", min_value=1, max_value=50, value=5, key="num_neighbors")
