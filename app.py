@@ -78,7 +78,7 @@ def define_edit_populations():
     
     # Define Parameters
     with st.sidebar.expander("Define Parameters"):
-        parameters_input = st.text_area("Enter parameters (comma-separated)", ", ".join(st.session_state.parameters))
+        parameters_input = st.text_area("Enter parameters (comma-separated)", ", ".join(st.session_state.parameters if st.session_state.parameters else ["para-A", "para-B", "para-C"]))
         st.session_state.parameters = [param.strip() for param in parameters_input.split(",") if param.strip()]
         st.session_state.config["parameters"] = st.session_state.parameters
     
@@ -128,8 +128,10 @@ def visualize_data(df):
     st.write("Current Population Fractions:")
     st.write(pop_counts.sort_index())
 
-    x_axis = st.selectbox("X-Axis", df.columns, index=0, key="x_axis")
-    y_axis = st.selectbox("Y-Axis", df.columns, index=1, key="y_axis")
+    #x_axis = st.selectbox("X-Axis", df.columns, index=0, key="x_axis")
+    #y_axis = st.selectbox("Y-Axis", df.columns, index=1, key="y_axis")
+    x_axis = st.selectbox("X-Axis", df.columns, index=0 if len(df.columns) > 0 else None, key="x_axis") # Default to first column 
+    y_axis = st.selectbox("Y-Axis", df.columns, index=1 if len(df.columns) > 1 else 0, key="y_axis") # Default to second column
     fig = px.scatter(df_filtered, x=x_axis, y=y_axis, opacity=0.6, color="Population")
     st.plotly_chart(fig)
 
@@ -197,7 +199,8 @@ elif choice == "Upload Configuration File":
 
 elif choice == "Define/Edit Populations":
     define_edit_populations()
-    
+    st.write("After defining/editing populations, you can generate synthetic data, adjust population fractions, and update individual population composition.")
+
     if st.sidebar.button("Generate Data"):
         df = generate_data(st.session_state.populations, st.session_state.parameters, st.session_state.seed)
         st.session_state['df'] = df
