@@ -102,7 +102,7 @@ def define_edit_populations():
         for i, pop in enumerate(st.session_state.populations):
             st.subheader(f"Population {i+1}")
             pop['name'] = st.text_input(f"Population Name", value=pop['name'], key=f"name_{i}")
-            pop['size'] = st.number_input(f"Size", min_value=100, max_value=10000, value=pop['size'], key=f"size_{i}")
+            pop['size'] = st.number_input(f"Size", min_value=100, max_value=1000000, value=pop['size'], key=f"size_{i}")
             
             # Use columns to organize parameter inputs
             col1, col2 = st.columns(2)
@@ -299,7 +299,7 @@ elif choice == "Class Imbalance Correction":
             sorted_populations = sorted(st.session_state.populations, key=lambda x: x['name'])
             
             for pop in sorted_populations:
-                desired_sizes[pop['name']] = st.number_input(f"Desired Size for {pop['name']}", min_value=0, max_value=10000, value=pop['size'], key=f"desired_size_{pop['name']}")
+                desired_sizes[pop['name']] = st.number_input(f"Desired Size for {pop['name']}", min_value=0, max_value=1000000, value=pop['size'], key=f"desired_size_{pop['name']}")
             
             balancing_technique = st.selectbox("Select Balancing Technique", ["None", "SMOTE", "ADASYN", "Random Undersampling"], index=0, key="balancing_technique")
             
