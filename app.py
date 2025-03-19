@@ -231,9 +231,21 @@ elif choice == "Define/Edit Populations":
         total_fraction = sum(new_sizes.values())
         st.sidebar.write("Total Fraction:", total_fraction)
         
-        if total_fraction != 100:
+        if total_fraction == 0: #<---------------------------------------- New code
+            st.sidebar.write("Warning: Total Fraction is zero. Defaulting to equal distribution.")
+            # Set default distribution (e.g., equally distribute among all populations)
+            num_populations = len(new_sizes)
+            default_value = 100 / num_populations if num_populations > 0 else 0
+            for pop_name in new_sizes:
+                new_sizes[pop_name] = default_value
+        elif total_fraction != 100:
+            # Scale the sizes proportionally to sum up to 100
             for pop_name in new_sizes:
                 new_sizes[pop_name] = (new_sizes[pop_name] / total_fraction) * 100
+            
+        #if total_fraction != 100: #<------------------------------------- Previous code
+        #    for pop_name in new_sizes:
+        #        new_sizes[pop_name] = (new_sizes[pop_name] / total_fraction) * 100
         
         if st.sidebar.button("Update Population Fractions"):
             total_size = len(st.session_state['df'])
