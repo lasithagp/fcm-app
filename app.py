@@ -143,7 +143,7 @@ def about_app():
     st.title(" Synthetic Flow Cytometry Data Generator")
     st.markdown("""
         Welcome to the **Synthetic Flow Cytometry Data Generator**!    
-        This app allows you to **create, modify, and analyze synthetic flow cytometry data** based on user-defined populations and parameters.  
+        This app allows you to **create and modify synthetic flow cytometry data** based on user-defined populations and parameters.  
 
         ### How to Use the App:
         - **Upload Configuration File**    
