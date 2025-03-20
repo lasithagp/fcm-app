@@ -1,0 +1,92 @@
+{
+    "seed": 42,
+    "populations": [
+        {
+            "name": "Sub-population CD3+CD4+",
+            "size": 500,
+            "FSC_mean": 300,
+            "FSC_std": 50,
+            "SSC_mean": 100,
+            "SSC_std": 10,
+            "CD3_mean": 750,
+            "CD3_std": 150,
+            "CD4_mean": 700,
+            "CD4_std": 120,
+            "CD154\n_mean": 750,
+            "CD154\n_std": 150,
+            "CD154_mean": 100,
+            "CD154_std": 10
+        },
+        {
+            "name": "Sub-Population CD3+CD4- ",
+            "size": 800,
+            "FSC_mean": 300,
+            "FSC_std": 50,
+            "SSC_mean": 100,
+            "SSC_std": 10,
+            "CD3_mean": 750,
+            "CD3_std": 150,
+            "CD4_mean": 70,
+            "CD4_std": 15,
+            "CD154\n_mean": 120,
+            "CD154\n_std": 30,
+            "CD154_mean": 100,
+            "CD154_std": 10
+        },
+        {
+            "name": "Sub-Population CD3- ",
+            "size": 2000,
+            "FSC_mean": 300,
+            "FSC_std": 50,
+            "SSC_mean": 100,
+            "SSC_std": 10,
+            "CD3_mean": 90,
+            "CD3_std": 15,
+            "CD4_mean": 70,
+            "CD4_std": 15,
+            "CD154\n_mean": 80,
+            "CD154\n_std": 12,
+            "CD154_mean": 100,
+            "CD154_std": 10
+        },
+        {
+            "name": " monocytes",
+            "size": 1500,
+            "FSC_mean": 400,
+            "FSC_std": 50,
+            "SSC_mean": 200,
+            "SSC_std": 30,
+            "CD3_mean": 90,
+            "CD3_std": 15,
+            "CD4_mean": 70,
+            "CD4_std": 15,
+            "CD154\n_mean": 80,
+            "CD154\n_std": 12,
+            "CD154_mean": 100,
+            "CD154_std": 10
+        },
+        {
+            "name": " granulocytes",
+            "size": 600,
+            "FSC_mean": 500,
+            "FSC_std": 30,
+            "SSC_mean": 600,
+            "SSC_std": 150,
+            "CD3_mean": 90,
+            "CD3_std": 15,
+            "CD4_mean": 70,
+            "CD4_std": 15,
+            "CD154\n_mean": 80,
+            "CD154\n_std": 12,
+            "CD154_mean": 100,
+            "CD154_std": 10
+        }
+    ],
+    "parameters": [
+        "FSC",
+        "SSC",
+        "CD3",
+        "CD4",
+        "CD154"
+    ]
+}
