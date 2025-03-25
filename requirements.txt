@@ -5,3 +5,4 @@ numpy==1.26.4
 plotly==5.24.1
 pandas==2.2.3
 imbalanced-learn==0.13.0
+streamlit_plotly_events
