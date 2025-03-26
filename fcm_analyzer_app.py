@@ -227,7 +227,7 @@ def download_fcs_sample():
         fcs_file = file.read()
         
     # Display the download button
-    st.download_button(label="Download Sample .fcs File",data=fcs_file, file_name="ABCDEFGHIJ-merged.fcs",
+    st.download_button(label="Download Sample .fcs File",data=fcs_file, file_name="sample_data_2.fcs",
                     mime="application/octet-stream",
                     key="download_fcs")
 
