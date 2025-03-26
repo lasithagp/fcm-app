@@ -216,7 +216,8 @@ def about_the_gating_app():
 
 def download_fcs_sample():
     # Define file path
-    file_path = "data/ABCDEFGHIJ-merged.fcs" 
+    #file_path = "data/ABCDEFGHIJ-merged.fcs" 
+    file_path = "data/sample_data_2.fcs"
     # Check if file exists
     if not os.path.exists(file_path):
         st.error("File not found. Please check the file path.")
