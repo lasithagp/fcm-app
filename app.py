@@ -180,12 +180,33 @@ def visualize_data(df):
     #y_axis = st.selectbox("Y-Axis", df.columns, index=1, key="y_axis")
     x_axis = st.selectbox("X-Axis", df.columns, index=0 if len(df.columns) > 0 else None, key="x_axis")
     y_axis = st.selectbox("Y-Axis", df.columns, index=1 if len(df.columns) > 1 else 0, key="y_axis")
+
+     # Axis Scale Selection
+    x_log_scale = st.checkbox("Log scale for X-axis", key="x_log")
+    y_log_scale = st.checkbox("Log scale for Y-axis", key="y_log")
     
     fig = px.scatter(df_filtered, x=x_axis, y=y_axis, opacity=0.6, color="Population")
+
+    # Apply log scale if selected
+    if x_log_scale:
+        fig.update_layout(xaxis_type="log")
+    if y_log_scale:
+        fig.update_layout(yaxis_type="log")
+
     st.plotly_chart(fig)
 
+    # Create Histogram
     hist_param = st.selectbox("Select Parameter for Histogram", df.columns, index=0, key="hist_param")
+
+    # Axis Scale for Histogram
+    hist_log_scale = st.checkbox("Log scale for Histogram", key="hist_log")
+
+    # Create Histogram
     fig_hist = px.histogram(df_filtered, x=hist_param, color="Population", nbins=50, opacity=0.6)
+
+    if hist_log_scale:
+            fig_hist.update_layout(xaxis_type="log")
+    
     st.plotly_chart(fig_hist)
 
 # Function to display information about the app

@@ -94,10 +94,20 @@ def apply_gating():
     x_axis = st.selectbox("Select X-axis", cols, index=0, key="x_axis")
     y_axis = st.selectbox("Select Y-axis", cols, index=1, key="y_axis")
 
+    # Checkboxes for log scale
+    x_log_scale = st.checkbox("Log Scale (X-axis)", key="x_log")
+    y_log_scale = st.checkbox("Log Scale (Y-axis)", key="y_log")
+
     # Create Plotly scatter plot
     fig = px.scatter(current_df, x=x_axis, y=y_axis, opacity=0.5)
     fig.update_traces(marker=dict(size=3))
     fig.update_layout(dragmode="lasso")
+
+    # Apply log scale if selected
+    if x_log_scale:
+        fig.update_xaxes(type="log")
+    if y_log_scale:
+        fig.update_yaxes(type="log")
 
     # Select points
     selected_points = plotly_events(fig, select_event=True)
