@@ -1492,7 +1492,7 @@ def download_fcs_sample():
     # Display the download button for second sample
     st.download_button(label="Download Second Sample .fcs File", data=fcs_file, file_name="sample_data_2.fcs",
                        mime="application/octet-stream",
-                       key="download_fcs")
+                       key="download_fcs_2")
 
 
 def about_the_gating_app():
