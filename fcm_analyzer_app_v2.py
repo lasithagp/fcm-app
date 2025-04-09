@@ -1489,6 +1489,10 @@ def download_fcs_sample():
     st.download_button(label="Download Sample .fcs File", data=fcs_file, file_name="ABCDEFGHIJ-merged.fcs",
                        mime="application/octet-stream",
                        key="download_fcs")
+    # Display the download button for second sample
+    st.st.download_button(label="Download Second Sample .fcs File", data=fcs_file, file_name="sample_data_2.fcs",
+                       mime="application/octet-stream",
+                       key="download_fcs")
 
 
 def about_the_gating_app():
