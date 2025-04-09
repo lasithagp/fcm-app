@@ -1490,7 +1490,7 @@ def download_fcs_sample():
                        mime="application/octet-stream",
                        key="download_fcs")
     # Display the download button for second sample
-    st.st.download_button(label="Download Second Sample .fcs File", data=fcs_file, file_name="sample_data_2.fcs",
+    st.download_button(label="Download Second Sample .fcs File", data=fcs_file, file_name="sample_data_2.fcs",
                        mime="application/octet-stream",
                        key="download_fcs")
 
