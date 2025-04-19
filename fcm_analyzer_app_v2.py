@@ -1575,6 +1575,28 @@ def download_synthetic_data_ui():
     else:
         st.warning("No synthetic data available. Please Generate data first.")
 
+# def download_fcs_sample():
+#     # Define file path
+#     file_path = "data/ABCDEFGHIJ-merged.fcs"
+#     file_path_2 = "data/sample_data_2.fcs" 
+#     # Check if files exists
+#     if not os.path.exists(file_path):
+#         st.error("File not found. Please check the file path.")
+#         return None
+
+#     if not os.path.exists(file_path_2):
+#         st.error("File not found. Please check the file path.")
+#         return None
+
+#     # Read the first file
+#     with open(file_path, "rb") as file:
+#         fcs_file = file.read()
+        
+#     # Display the download button for first sample
+#     st.download_button(label="Download Sample .fcs File", data=fcs_file, file_name="ABCDEFGHIJ-merged.fcs",
+#                        mime="application/octet-stream",
+#                        key="download_fcs")
+
 def download_fcs_sample():
     # Define file path
     file_path = "data/ABCDEFGHIJ-merged.fcs"
@@ -1596,6 +1618,14 @@ def download_fcs_sample():
     st.download_button(label="Download Sample .fcs File", data=fcs_file, file_name="ABCDEFGHIJ-merged.fcs",
                        mime="application/octet-stream",
                        key="download_fcs")
+    
+    # Read the second file
+    with open(file_path_2, "rb") as file_2:
+        fcs_file_2 = file_2.read()
+    # Display the download button for second sample
+    st.download_button(label="Download Second Sample .fcs File", data=fcs_file_2, file_name="sample_data_2.fcs",
+                       mime="application/octet-stream",
+                       key="download_fcs_2")
 
 def about_the_gating_app():
     st.title(" Synthetic Flow Cytometry Data Generator")
