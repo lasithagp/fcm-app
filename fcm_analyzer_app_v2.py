@@ -810,8 +810,8 @@ def generate_synthetic_data_ui():
     
     #data_quality_metrics_previous_ui()  # placeholder for previous UI code use with commented out evaluate_synthetic_data function (i.e. evaluate_synthetic_data previous)
     data_quality_metrics_ui()  # placeholder for new UI code use with new evaluate_synthetic_data function (i.e. evaluate_synthetic_data new)
-    show_evaluation_results()
-   
+    #show_evaluation_results()
+    show_evaluation_results_2()
 
 def edit_populations_ui():
     from imblearn.over_sampling import SMOTE, ADASYN, RandomOverSampler
@@ -1353,6 +1353,91 @@ def show_evaluation_results():
         # Add spacing at bottom
         st.write("")  
 
+
+def show_evaluation_results_2(): # Matching the scope of original data with sythetic data in the current gates
+    if st.session_state.evaluation_results:
+        # Main page container for all results
+        #with st.container():
+        st.write("## Data Quality Evaluation Results")
+        
+        # Create tabs for each population's results
+        tabs = st.tabs([f"{result['population']}" for result in st.session_state.evaluation_results])
+        
+        for i, result in enumerate(st.session_state.evaluation_results):
+            with tabs[i]:
+                # Metrics in columns
+                col1, col2, col3 = st.columns(3)
+                
+                with col1:
+                    st.metric(
+                        "Silhouette Score",
+                        f"{result['metrics'].get('silhouette', float('nan')):.3f}",
+                        help="Means separation between original and synthetic \
+                            \n (-1 to 1, closer to 0 is better) \
+                                \n (0 = overlapping, 1 = well separated) \
+                                    \n Mean score across all features is shown"
+                    )
+                
+                with col2:
+                    st.metric(
+                        "Mutual Information", 
+                        f"{result['metrics'].get('mutual_info', float('nan')):.3f}",
+                        help="Statistical dependency between distributions (higher is better)\
+                            \n (0 = independent, 1 = identical)\
+                                \n Mean MI across all features is shown"
+                    )
+                
+                with col3:
+                    st.metric(
+                        "Wasserstein Distance",
+                        f"{result['metrics'].get('wasserstein', float('nan')):.3f}",
+                        help="Distance between distributions (lower is better) \
+                            \n (0 = identical, 1 = completely different) \
+                                \n Values are normalized by standard deviation of original and synthetic data \
+                                \n Mean distance across all features is shown"
+                    )
+                    
+                # Add dimensionality reduction visualization
+                st.write("### Dimensionality Comparison")
+                
+                # Get population-specific data
+                try:
+                    population_name = result['population']
+                    # Get ORIGINAL data for this specific population
+                    original = st.session_state.gated_data[population_name].values
+                    # Get SYNTHETIC data for this population
+                    synthetic = result['synthetic_data']
+                    
+                    # Generate plot with population-specific data
+                    dr_fig = plot_dimensionality_reduction(
+                        original,
+                        synthetic,
+                        population_name,
+                        method=st.session_state.dr_method
+                    )
+                    st.plotly_chart(dr_fig, use_container_width=True)
+                    
+                except Exception as e:
+                    st.error(f"Dimensionality reduction failed: {str(e)}")
+                    
+                # Distribution plot
+                if 'synthetic_data' in result:
+                    try:
+                        fig = plot_distribution_comparison(
+                            np.concatenate([d.values for d in st.session_state.gated_data.values()]),
+                            result['synthetic_data'],
+                            result['population'],
+                            max_features_per_row=st.session_state.get('max_features_per_row', 4),
+                            feature_names=st.session_state.syn_data.columns.tolist()
+                        )
+                        st.pyplot(fig)
+                    except Exception as e:
+                        st.warning(f"Could not generate distribution plot: {str(e)}")
+                else:
+                    st.warning("No synthetic data available for visualization")
+
+        # Add spacing at bottom
+        st.write("")  
 
 
 def edit_populations_ui():
