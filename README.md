@@ -20,7 +20,7 @@ allows the application of dimensionality reduction techniques such as UMAP and t
 underlying cell population structures of the gated population. 
 
 
-The latest code for APp-2 (FCM Data Analyzer) is available in the fcm_analyzer_app_v2.py file
+The latest code for App-2 (FCM Data Analyzer) is available in the fcm_analyzer_app_v2.py file
 
 
 ## For HF
