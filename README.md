@@ -1,16 +1,3 @@
-On HF
-
----
-title: Fcm App
-emoji: 💻
-colorFrom: pink
-colorTo: gray
-sdk: streamlit
-sdk_version: 1.43.1
-app_file: app.py
-pinned: false
----
-
 # Synthetic Flow Cytometry Data Generator Apps
 An interactive platform to generate synthetic flow cytometry data
 
@@ -34,5 +21,19 @@ underlying cell population structures of the gated population.
 
 
 The latest code for APp-2 (FCM Data Analyzer) is available in the fcm_analyzer_app_v2.py file
+
+
+## On HF
+
+---
+title: Fcm App
+emoji: 💻
+colorFrom: pink
+colorTo: gray
+sdk: streamlit
+sdk_version: 1.43.1
+app_file: app.py
+pinned: false
+---
 
  
