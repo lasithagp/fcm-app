@@ -56,7 +56,7 @@ streamlit run fcm_analyzer_app_v2.py  # Launch App-2
 
 App-1:
 
-- Define 3 cell populations (e.g., CD4+, CD8+, monocytes) with distinct Gaussian parameters (Mean, Std) and corresponding marker parameters (FCS, SSC).
+- Define 3 cell populations (e.g., CD4+, CD8+, monocytes) with distinct Gaussian parameters (Mean, Std) and corresponding marker parameters (FCS, SSC, CD3, CD4, CD8, etc. ).
 - Adjust population ratios (e.g., 50% CD4+, 30% CD8+) and export synthetic data.
 
 App-2:
