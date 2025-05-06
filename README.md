@@ -47,8 +47,12 @@ Prerequisites:
 
 
 ```
+# For app-1
 pip install -r requirements.txt  # Install dependencies
 streamlit run fcm-app.py        # Launch App-1
+
+# For app-2
+pip install -r requirements_2.txt  # Install dependencies
 streamlit run fcm_analyzer_app_v2.py  # Launch App-2
 ```
 
