@@ -17,6 +17,7 @@ Together, they offer a flexible toolkit for educators to create noise-free, priv
 App-1: Synthetic FCM Data Generator
 
 Purpose: Generate synthetic FCM data (.fcs files) from scratch using domain knowledge.
+
 Features:
 
    - Define cell populations via parameters (mean, standard deviation).
@@ -28,6 +29,7 @@ Code for App-1 is available in the fcm-app.py file
 
 ### App-2 (Flow Cytometry Data Analyzer)
 Purpose: Generate synthetic data from real FCM files by gating and modeling populations.
+
 Features:
 
    - Upload and gate real FCM data (.fcs) using Lasso tools.
