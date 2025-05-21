@@ -1,25 +1,39 @@
 name: Sync to Hugging Face hub
+
 on:
   push:
     branches: [main]
-
-  # to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository with Git LFS
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          lfs: true
-      - name: Verify Authentication
+          lfs: true  # this pulls LFS-tracked files
+
+      - name: Set up Git LFS
+        run: |
+          git lfs install
+          git lfs pull
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Verify Hugging Face Authentication
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           git ls-remote https://lasithagp:$HF_TOKEN@huggingface.co/spaces/lasithagp/fcm-app
-      - name: Push to hub
+
+      - name: Push to Hugging Face Hub with LFS support
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://lasithagp:$HF_TOKEN@huggingface.co/spaces/lasithagp/fcm-app main
+        run: |
+          git remote add hf https://lasithagp:$HF_TOKEN@huggingface.co/spaces/lasithagp/fcm-app
+          git push hf main --force
